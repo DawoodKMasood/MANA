@@ -10,5 +10,4 @@ I have seperated the flow of each components and there is a good reason for it! 
 **Note:** Since this project is more likely to change with time as per the requirements, these diagram will be outdated as well! But you'll get the general idea of how things are working behind the scene.
 
 ## Scraper Flow Diagram
-![MANA Scraper Flow Diagram](https://user-images.githubusercontent.com/91176669/136770086-e995f803-d02d-4952-86ed-c796f545d06d.png)
-
+![MANA Scraper Flow Diagram (1)](https://user-images.githubusercontent.com/91176669/136932603-9585b6b7-43fe-43f5-abfc-a27a7fbae417.png)
