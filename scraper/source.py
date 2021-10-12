@@ -9,8 +9,14 @@ def twitter():
     # Execute our database query
     cursor.execute("SELECT * FROM `twitter_source`")
     
+    # Store results into `results` variable
+    results = cursor.fetchall()
+    
+    # Reset DB cursor
+    cursor.reset()
+    
     # Return cursor
-    return cursor
+    return results
 
 def news():
     # Initialize connection to MySQL database
@@ -19,5 +25,11 @@ def news():
     # Execute our database query
     cursor.execute("SELECT * FROM `news_source`")
     
+    # Store results into `results` variable
+    results = cursor.fetchall()
+    
+    # Reset DB cursor
+    cursor.reset()
+    
     # Return cursor
-    return cursor
+    return results

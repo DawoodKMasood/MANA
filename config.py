@@ -5,6 +5,9 @@ import mysql.connector
 # The frequency with which the scraper will attempt to scrape content again. (DEFAULT: 3600)
 scrape_freq = 3600
 
+# Base Symbol that will be used to trade crypto coins with
+base_symbol = "USDT"
+
 # MySQL host to which our scraper will connect to.
 mysql_host = "localhost"
 
