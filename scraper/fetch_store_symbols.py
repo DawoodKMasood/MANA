@@ -25,6 +25,9 @@ from binance.client import Client
 # Imports Regex module
 import re
 
+# Imports `time` module for sleep
+import time
+
 def clean_symbol(symbol):
     # Replaces `USDT` with NULL leaving only base symbol
     result = symbol.replace("USDT", "")
@@ -93,7 +96,7 @@ def fetch_binance_auth():
     # Return results
     return results
 
-def fetch_crypto_pairs():
+def commit():
     # Fetch Binance authentication (api_key & secret_key) from database
     binance_auth = fetch_binance_auth()
     
@@ -102,6 +105,9 @@ def fetch_crypto_pairs():
     
     # Get exchange info from client
     exchange_info = client.get_exchange_info()
+    
+    # Sleeps for 200 miliseconds to avoid ban from API
+    time.sleep(config.binance_api_limit)
     
     # Initialize an empty list of `symbols`
     symbols = []
@@ -112,15 +118,12 @@ def fetch_crypto_pairs():
         # Check if `base_symbol` from config matches
         if re.search(f'(?:{config.base_symbol})', str(s)):
             
-            # Fetches symbol current price
-            p = client.get_symbol_ticker(symbol=s['symbol'])
-            
-            # If it matches then append the string to `symbols` list
-            add_symbol_to_database(s['symbol'], p['price'])
-
-# This is the first function that will be called when this file is executed
-def main():
-    fetch_crypto_pairs()
-
-if __name__ == "__main__":
-    main()  
+            if str(s) != "USDTUSDT":
+                # Fetches symbol current price
+                p = client.get_symbol_ticker(symbol=s['symbol'])
+                
+                # Sleeps for 200 miliseconds to avoid ban from API
+                time.sleep(config.binance_api_limit)
+                
+                # If it matches then append the string to `symbols` list
+                add_symbol_to_database(s['symbol'], p['price'])

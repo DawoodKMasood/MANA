@@ -26,3 +26,6 @@ database = mysql.connector.connect(
     password=mysql_password,
     database=mysql_database
 )
+
+# Binance API Limit for requests in seconds
+binance_api_limit = 0.2
