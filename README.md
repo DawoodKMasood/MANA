@@ -1,5 +1,5 @@
 # MANA
-A crypto trading bot that analyzes Twitter tweets and news websites for trading sentiments.
+A crypto trading bot that analyzes Twitter tweets and news websites for trading sentiments (uses MySQL for storing/retrieving data).
 
 # MANA Flow Diagram
 
