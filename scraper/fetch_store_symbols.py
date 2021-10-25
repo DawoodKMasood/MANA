@@ -118,12 +118,11 @@ def commit():
         # Check if `base_symbol` from config matches
         if re.search(f'(?:{config.base_symbol})', str(s)):
             
-            if str(s) != "USDTUSDT":
-                # Fetches symbol current price
-                p = client.get_symbol_ticker(symbol=s['symbol'])
-                
-                # Sleeps for 200 miliseconds to avoid ban from API
-                time.sleep(config.binance_api_limit)
-                
-                # If it matches then append the string to `symbols` list
-                add_symbol_to_database(s['symbol'], p['price'])
+            # Fetches symbol current price
+            p = client.get_symbol_ticker(symbol=s['symbol'])
+            
+            # Sleeps for 200 miliseconds to avoid ban from API
+            time.sleep(config.binance_api_limit)
+            
+            # If it matches then append the string to `symbols` list
+            add_symbol_to_database(s['symbol'], p['price'])
